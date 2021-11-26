@@ -47,17 +47,15 @@ const App: React.FC = () => {
       <ResetCSS />
       <GlobalStyle />
       <GlobalCheckClaimStatus excludeLocations={[]} />
-      <Menu>
-        <SuspenseWithChunkError fallback={<PageLoader />}>
-          <Switch>
-            <Route path="/">
-              <Lottery />
-            </Route>
-            {/* 404 */}
-            <Route component={NotFound} />
-          </Switch>
-        </SuspenseWithChunkError>
-      </Menu>
+      <SuspenseWithChunkError fallback={<PageLoader />}>
+        <Switch>
+          <Route path="/">
+            <Lottery />
+          </Route>
+          {/* 404 */}
+          <Route component={NotFound} />
+        </Switch>
+      </SuspenseWithChunkError>
       <DatePickerPortal />
     </Router>
   )
