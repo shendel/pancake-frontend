@@ -46,7 +46,6 @@ const App: React.FC = () => {
     <Router history={history}>
       <ResetCSS />
       <GlobalStyle />
-      <GlobalCheckClaimStatus excludeLocations={[]} />
       <SuspenseWithChunkError fallback={<PageLoader />}>
         <Switch>
           <Route path="/">

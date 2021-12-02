@@ -112,6 +112,7 @@ export const useGetBnbBalance = () => {
 }
 
 export const useGetCakeBalance = () => {
+  console.log('>>> use get cake balance', tokens.cake)
   const { balance, fetchStatus } = useTokenBalance(tokens.cake.address)
 
   // TODO: Remove ethers conversion once useTokenBalance is converted to ethers.BigNumber
