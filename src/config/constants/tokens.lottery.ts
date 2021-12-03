@@ -14,6 +14,7 @@ interface SerializedTokenList {
 }
 
 interface TokenInfo {
+  address: string
   symbol: string
   title: string
   decimals: number
@@ -55,6 +56,7 @@ export const info = (): TokenInfo => {
   // @ts-ignore
   } = window.SO_LotteryConfig
   return {
+    address,
     symbol,
     title,
     decimals,
