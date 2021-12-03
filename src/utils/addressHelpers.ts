@@ -12,9 +12,13 @@ export const getMasterChefAddress = () => {
   return getAddress(addresses.masterChef)
 }
 export const getMulticallAddress = () => {
+  // @ts-ignore
+  return window.SO_LotteryConfig.contract
   return getAddress(addresses.multiCall)
 }
 export const getLotteryV2Address = () => {
+  // @ts-ignore
+  return window.SO_LotteryConfig.contract
   return getAddress(addresses.lotteryV2)
 }
 export const getPancakeProfileAddress = () => {
