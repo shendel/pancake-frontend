@@ -16,6 +16,7 @@ import SuspenseWithChunkError from './components/SuspenseWithChunkError'
 import PageLoader from './components/Loader/PageLoader'
 import GlobalCheckClaimStatus from './components/GlobalCheckClaimStatus'
 import history from './routerHistory'
+import { ToastListener } from './contexts/ToastsContext'
 
 
 import { useInactiveListener } from './hooks/useInactiveListener'
@@ -55,6 +56,7 @@ const App: React.FC = () => {
           <Route component={NotFound} />
         </Switch>
       </SuspenseWithChunkError>
+      <ToastListener />
       <DatePickerPortal />
     </Router>
   )
