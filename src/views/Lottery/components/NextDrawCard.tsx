@@ -67,8 +67,7 @@ const NextDrawCard = () => {
   const [isExpanded, setIsExpanded] = useState(false)
   const ticketBuyIsDisabled = status !== LotteryStatus.OPEN || isTransitioning
 
-  const cakePriceBusd = 1
-  // usePriceCakeBusd()
+  const cakePriceBusd = token.info().price || 0
   const prizeInBusd = amountCollectedInCake.times(cakePriceBusd)
   const endTimeMs = parseInt(endTime, 10) * 1000
   const endDate = new Date(endTimeMs)
@@ -83,6 +82,21 @@ const NextDrawCard = () => {
         </Heading>
       )
     }
+
+    if (!token.info().price) {
+      return (
+        <Balance
+          fontSize="40px"
+          color="secondary"
+          textAlign={['center', null, null, 'left']}
+          lineHeight="1"
+          bold
+          unit={` ${token.info().symbol}`}
+          value={getBalanceNumber(amountCollectedInCake, token.info().decimals)}
+          decimals={0}
+        />
+      )
+    }
     return (
       <>
         {prizeInBusd.isNaN() ? (
@@ -95,7 +109,7 @@ const NextDrawCard = () => {
             lineHeight="1"
             bold
             prefix="~$"
-            value={getBalanceNumber(prizeInBusd)}
+            value={getBalanceNumber(prizeInBusd, token.info().decimals)}
             decimals={0}
           />
         )}
@@ -107,7 +121,7 @@ const NextDrawCard = () => {
             color="textSubtle"
             textAlign={['center', null, null, 'left']}
             unit={` ${token.info().symbol}`}
-            value={getBalanceNumber(amountCollectedInCake)}
+            value={getBalanceNumber(amountCollectedInCake, token.info().decimals)}
             decimals={0}
           />
         )}

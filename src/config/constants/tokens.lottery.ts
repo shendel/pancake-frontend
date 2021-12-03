@@ -17,6 +17,7 @@ interface TokenInfo {
   symbol: string
   title: string
   decimals: number
+  price: number | false
 }
 
 export const mainnetTokens = {
@@ -48,14 +49,16 @@ export const info = (): TokenInfo => {
       symbol,
       address,
       decimals,
-      title
+      title,
+      price,
     },
   // @ts-ignore
   } = window.SO_LotteryConfig
   return {
     symbol,
     title,
-    decimals
+    decimals,
+    price: price || false
   }
 }
 

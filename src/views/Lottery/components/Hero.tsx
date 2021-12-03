@@ -7,6 +7,7 @@ import { usePriceCakeBusd } from 'state/farms/hooks'
 import { useLottery } from 'state/lottery/hooks'
 import { getBalanceNumber } from 'utils/formatBalance'
 import Balance from 'components/Balance'
+import * as token from 'config/constants/tokens.lottery'
 import { TicketPurchaseCard } from '../svgs'
 import BuyTicketsButton from './BuyTicketsButton'
 
@@ -219,9 +220,9 @@ const Hero = () => {
     isTransitioning,
   } = useLottery()
 
-  const cakePriceBusd = usePriceCakeBusd()
+  const cakePriceBusd = token.info().price || 0
   const prizeInBusd = amountCollectedInCake.times(cakePriceBusd)
-  const prizeTotal = getBalanceNumber(prizeInBusd)
+  const prizeTotal = getBalanceNumber(prizeInBusd, token.info().decimals)
   const ticketBuyIsDisabled = status !== LotteryStatus.OPEN || isTransitioning
 
   const getHeroHeading = () => {
@@ -259,7 +260,9 @@ const Hero = () => {
       <Heading mb="8px" scale="md" color="#ffffff" id="lottery-hero-title">
         {t('The Lottery')}
       </Heading>
-      {getHeroHeading()}
+      {token.info().price && (
+        <>{getHeroHeading()}</>
+      )}
       <TicketContainer
         position="relative"
         width={['240px', '288px']}

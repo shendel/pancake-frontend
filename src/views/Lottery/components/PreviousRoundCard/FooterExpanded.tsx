@@ -29,7 +29,7 @@ const PreviousRoundCardFooter: React.FC<{ lotteryNodeData: LotteryRound; lottery
   const { t } = useTranslation()
   const [fetchedLotteryGraphData, setFetchedLotteryGraphData] = useState<LotteryRoundGraphEntity>()
   const lotteryGraphDataFromState = useGetLotteryGraphDataById(lotteryId)
-  const cakePriceBusd = usePriceCakeBusd()
+  const cakePriceBusd = token.info().price || 0
 
   useEffect(() => {
     const getGraphData = async () => {
@@ -66,7 +66,7 @@ const PreviousRoundCardFooter: React.FC<{ lotteryNodeData: LotteryRound; lottery
           <Skeleton my="7px" height={40} width={200} />
         ) : (
           <Heading scale="xl" lineHeight="1" color="secondary">
-            ~${formatNumber(getBalanceNumber(prizeInBusd), 0, 0)}
+            ~${formatNumber(getBalanceNumber(prizeInBusd, token.info().decimals), 0, 0)}
           </Heading>
         )}
         {prizeInBusd.isNaN() ? (
@@ -76,7 +76,7 @@ const PreviousRoundCardFooter: React.FC<{ lotteryNodeData: LotteryRound; lottery
             fontSize="14px"
             color="textSubtle"
             unit={` ${token.info().symbol}`}
-            value={getBalanceNumber(lotteryNodeData?.amountCollectedInCake)}
+            value={getBalanceNumber(lotteryNodeData?.amountCollectedInCake, token.info().decimals)}
             decimals={0}
           />
         )}
