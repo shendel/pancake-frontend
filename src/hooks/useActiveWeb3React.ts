@@ -20,8 +20,8 @@ const useActiveWeb3React = (): Web3ReactContextInterface<Web3Provider> => {
       refEth.current = library
     }
   }, [library])
-
-  return { library: provider, chainId: chainId ?? parseInt(process.env.REACT_APP_CHAIN_ID, 10), ...web3React }
+  // @ts-ignore
+  return { library: provider, chainId: chainId ?? parseInt(window.SO_LotteryConfig.chainId, 10), ...web3React }
 }
 
 export default useActiveWeb3React

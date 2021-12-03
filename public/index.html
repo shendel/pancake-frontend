@@ -43,8 +43,10 @@
       })(window, document, 'script', 'dataLayer', '%REACT_APP_GTAG%')
     </script>
     <script type="text/javascript">
+
       window.SO_LotteryConfig = {
         chainId: 97,
+        rpc: 'https://data-seed-prebsc-1-s1.binance.org:8545/',
         contract: '0xbb6e81ae73b8a09c964ecd361e36b573aa332cab',
         token: {
           symbol: 'WEENUS',
@@ -54,6 +56,22 @@
           price: 10
         }
       }
+
+      // Matic
+      /*
+      window.SO_LotteryConfig = {
+        chainId: 80001,
+        rpc: 'https://rpc-mumbai.maticvigil.com',
+        contract: '0x6e9c98a8a481bf038ba7e1d669a0086547dd144e',
+        token: {
+          symbol: 'TST',
+          address: '0x2d7882bedcbfddce29ba99965dd3cdf7fcb10a1e',
+          decimals: 18,
+          title: 'Test Token',
+          price: 10
+        }
+      }
+      */
     </script>
   </head>
   <body>
