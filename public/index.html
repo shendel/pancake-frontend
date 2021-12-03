@@ -3,10 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <!-- Links -->
+    <!--
     <link rel="preconnect" href="%REACT_APP_NODE_1%" />
     <link rel="preconnect" href="%REACT_APP_NODE_2%" />
     <link rel="preconnect" href="%REACT_APP_NODE_3%" />
     <link rel="preconnect" href="%REACT_APP_NODE_PRODUCTION%" />
+    -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600&display=swap" rel="stylesheet" />
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
@@ -39,6 +41,12 @@
         j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl
         f.parentNode.insertBefore(j, f)
       })(window, document, 'script', 'dataLayer', '%REACT_APP_GTAG%')
+    </script>
+    <script type="text/javascript">
+      window.SO_LotteryConfig = {
+        chainId: 97,
+        contract: '0xbb6e81ae73b8a09c964ecd361e36b573aa332cab'
+      }
     </script>
   </head>
   <body>
