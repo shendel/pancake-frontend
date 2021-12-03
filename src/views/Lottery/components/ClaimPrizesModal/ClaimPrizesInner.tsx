@@ -11,6 +11,7 @@ import { fetchUserLotteries } from 'state/lottery'
 import { useGasPrice } from 'state/user/hooks'
 import { useAppDispatch } from 'state'
 import Balance from 'components/Balance'
+import * as token from 'config/constants/tokens.lottery'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import useToast from 'hooks/useToast'
 import { useLotteryV2Contract } from 'hooks/useContract'
@@ -95,7 +96,7 @@ const ClaimInnerContainer: React.FC<ClaimInnerProps> = ({ onSuccess, roundsToCla
         toastSuccess(
           t('Prizes Collected!'),
           <ToastDescriptionWithTx txHash={receipt.transactionHash}>
-            {t('Your CAKE prizes for round %lotteryId% have been sent to your wallet', { lotteryId })}
+            {t('Your %symbol% prizes for round %lotteryId% have been sent to your wallet', { lotteryId , symbol: token.info().symbol })}
           </ToastDescriptionWithTx>,
         )
         setPendingTx(false)
@@ -161,7 +162,7 @@ const ClaimInnerContainer: React.FC<ClaimInnerProps> = ({ onSuccess, roundsToCla
       setPendingTx(false)
       toastSuccess(
         t('Prizes Collected!'),
-        t('Your CAKE prizes for round %lotteryId% have been sent to your wallet', { lotteryId }),
+        t('Your %symbol% prizes for round %lotteryId% have been sent to your wallet', { lotteryId, symbol: token.info().symbol }),
       )
       handleProgressToNextClaim()
     }
@@ -185,7 +186,7 @@ const ClaimInnerContainer: React.FC<ClaimInnerProps> = ({ onSuccess, roundsToCla
             fontSize="44px"
             bold
             color="secondary"
-            unit=" CAKE!"
+            unit={` ${token.info().symbol}!`}
           />
           <PresentWonIcon ml={['0', null, '12px']} width="64px" />
         </Flex>

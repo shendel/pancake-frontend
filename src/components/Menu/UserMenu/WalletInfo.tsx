@@ -6,7 +6,7 @@ import useAuth from 'hooks/useAuth'
 import { useTranslation } from 'contexts/Localization'
 import { getBscScanLink } from 'utils'
 import { getFullDisplayBalance, formatBigNumber } from 'utils/formatBalance'
-import tokens from 'config/constants/tokens'
+import tokens from 'config/constants/tokens.lottery'
 import CopyAddress from './CopyAddress'
 
 interface WalletInfoProps {

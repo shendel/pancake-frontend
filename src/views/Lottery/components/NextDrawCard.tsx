@@ -14,6 +14,7 @@ import {
   CardFooter,
   ExpandableLabel,
 } from '@pancakeswap/uikit'
+import * as token from 'config/constants/tokens.lottery'
 import { useWeb3React } from '@web3-react/core'
 import { LotteryStatus } from 'config/constants/types'
 import { useTranslation } from 'contexts/Localization'
@@ -105,7 +106,7 @@ const NextDrawCard = () => {
             fontSize="14px"
             color="textSubtle"
             textAlign={['center', null, null, 'left']}
-            unit=" CAKE"
+            unit={` ${token.info().symbol}`}
             value={getBalanceNumber(amountCollectedInCake)}
             decimals={0}
           />

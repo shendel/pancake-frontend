@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Modal, Text, Flex, Button, ArrowBackIcon, AutoRenewIcon } from '@pancakeswap/uikit'
 import useTheme from 'hooks/useTheme'
 import { useTranslation } from 'contexts/Localization'
+import * as token from 'config/constants/tokens.lottery'
 import TicketInput from './TicketInput'
 import { UpdateTicketAction, Ticket } from './useTicketsReducer'
 
@@ -45,7 +46,7 @@ const EditNumbersModal: React.FC<{
       <ScrollableContainer>
         <Flex justifyContent="space-between" mb="16px">
           <Text color="textSubtle">{t('Total cost')}:</Text>
-          <Text>~{totalCost} CAKE</Text>
+          <Text>~{totalCost} {token.info().symbol}</Text>
         </Flex>
         <Text fontSize="12px" color="textSubtle" mb="16px">
           {t(
