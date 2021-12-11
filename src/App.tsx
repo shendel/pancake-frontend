@@ -17,6 +17,7 @@ import PageLoader from './components/Loader/PageLoader'
 import GlobalCheckClaimStatus from './components/GlobalCheckClaimStatus'
 import history from './routerHistory'
 import { ToastListener } from './contexts/ToastsContext'
+import { StyleSheetManager } from 'styled-components'
 
 
 import { useInactiveListener } from './hooks/useInactiveListener'
@@ -44,21 +45,23 @@ const App: React.FC = () => {
   useInactiveListener()
 
   return (
-    <Router history={history}>
-      <ResetCSS />
-      <GlobalStyle />
-      <SuspenseWithChunkError fallback={<PageLoader />}>
-        <Switch>
-          <Route path="/">
-            <Lottery />
-          </Route>
-          {/* 404 */}
-          <Route component={NotFound} />
-        </Switch>
-      </SuspenseWithChunkError>
-      <ToastListener />
-      <DatePickerPortal />
-    </Router>
+    <StyleSheetManager target={document.getElementById('lottery-style-holder')}>
+      <Router history={history}>
+        <ResetCSS />
+        <GlobalStyle />
+        <SuspenseWithChunkError fallback={<PageLoader />}>
+          <Switch>
+            <Route path="/">
+              <Lottery />
+            </Route>
+            {/* 404 */}
+            <Route component={NotFound} />
+          </Switch>
+        </SuspenseWithChunkError>
+        <ToastListener />
+        <DatePickerPortal />
+      </Router>
+    </StyleSheetManager>
   )
 }
 

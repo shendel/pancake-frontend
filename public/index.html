@@ -87,6 +87,16 @@
       ></iframe>
     </noscript>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    
+    <style>
+      #root::before,
+      #root::after,
+      #root *::before,
+      #root *::after {
+        all: unset;
+      }
+    </style>
+    <div id="lottery-style-holder"></div>
     <div id="root"></div>
     <div id="portal-root"></div>
   </body>
