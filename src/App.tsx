@@ -18,6 +18,7 @@ import GlobalCheckClaimStatus from './components/GlobalCheckClaimStatus'
 import history from './routerHistory'
 import { ToastListener } from './contexts/ToastsContext'
 import { StyleSheetManager } from 'styled-components'
+import stylisImportantPlugin from 'stylis-important-plugin';
 
 
 import { useInactiveListener } from './hooks/useInactiveListener'
@@ -45,9 +46,8 @@ const App: React.FC = () => {
   useInactiveListener()
 
   return (
-    <StyleSheetManager target={document.getElementById('lottery-style-holder')}>
+    <StyleSheetManager disableCSSOMInjection={true} target={document.getElementById('lottery-style-holder')} stylisPlugins={[stylisImportantPlugin]}>
       <Router history={history}>
-        <ResetCSS />
         <GlobalStyle />
         <SuspenseWithChunkError fallback={<PageLoader />}>
           <Switch>
